@@ -1,0 +1,183 @@
+{{define "title"}}Sign Wave Solutions{{end}}
+{{define "scripts"}}
+<link href="/static/output.css" rel="stylesheet">
+{{end}}
+{{define "body"}}
+<main>
+    <div class="bg-white">
+        <header class="absolute inset-x-0 top-0 z-50">
+            <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+                <div class="flex lg:flex-1">
+                    <a href="#" class="-m-1.5 p-1.5">
+                        <span class="sr-only">Sign Wave Solutions</span>
+                        <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                            alt="">
+                    </a>
+                </div>
+                <div class="flex lg:hidden">
+                    <button type="button" id="menu-button" hx-get="/sidebar" hx-trigger="click" hx-target="#sidebar"
+                        hx-swap="innerHTML"
+                        class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                            aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="hidden lg:flex lg:gap-x-12">
+                    <a href="#about" class="text-sm font-semibold leading-6 text-gray-900">Sobre</a>
+                    <a href="#services" class="text-sm font-semibold leading-6 text-gray-900">Serviços</a>
+                    <a href="#contacts" class="text-sm font-semibold leading-6 text-gray-900">Contactos</a>
+                </div>
+                <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+                    <a href="/order" class="text-sm font-semibold leading-6 text-gray-900">Pedir Orçamento<span
+                            aria-hidden="true">&rarr;</span></a>
+                </div>
+            </nav>
+
+            <!-- Sidebar -->
+            <div id="sidebar" class="lg:hidden fixed inset-0 z-50 hidden bg-white">
+                <!-- Sidebar content will be dynamically loaded here by HTMX -->
+            </div>
+        </header>
+
+
+        <div class="relative isolate px-6 pt-14 lg:px-8">
+            <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+                aria-hidden="true">
+                <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+                    style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+                </div>
+            </div>
+            <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+                <div class="text-center">
+                    <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">A Solução para os seus
+                        problemas de
+                        comunicação
+                    </h1>
+                    <p class="mt-6 text-lg leading-8 text-gray-600">Sign Wave Solutions, Empresa de serviços de língua
+                        gestual portuguesa.
+                    </p>
+                </div>
+            </div>
+            <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+                aria-hidden="true">
+                <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
+                    style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+                </div>
+            </div>
+        </div>
+    </div>
+    <span class="relative flex justify-center">
+        <div
+            class="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-transparent bg-gradient-to-r from-transparent via-gray-500 to-transparent opacity-75">
+        </div>
+    </span>
+
+    <section id="about" class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+        <div class="text-center mb-5">
+            <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Sobre Nós
+            </h1>
+            <p class="mt-6  text-left leading-7">
+                A Sign Wave Solutions é uma empresa dedicada a promover a acessibilidade e a inclusão através da Língua
+                Gestual Portuguesa (LGP). Fundada por Carolina Ferreira e Mafalda Sousa, ambas licenciadas em Língua
+                Gestual Portuguesa, a nossa missão é fornecer serviços de alta qualidade que facilitam a comunicação
+                entre pessoas surdas e ouvintes. Com uma equipa experiente e apaixonada, empenhamo-nos em oferecer
+                soluções inovadoras, desde interpretação de LGP até formação e consultoria, ajudando a construir uma
+                sociedade mais inclusiva para todos.
+            </p>
+        </div>
+        <div class="flex justify-between text-center">
+            <div class="">
+                <img src="./static/carol.png" class="rounded-xl" width="300" height="300" />
+                <p>Carolina Ferreira
+                    <hr> Licenciatura Língua Gestual Portuguesa
+                </p>
+            </div>
+            <div>
+                <img src="./static/mafalda.png" class="rounded-xl" width="300" height="300" />
+                <p>Mafalda Sousa
+                    <hr> Licenciatura Língua Gestual Portuguesa
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <span class="relative flex justify-center">
+        <div
+            class="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-transparent bg-gradient-to-r from-transparent via-gray-500 to-transparent opacity-75">
+        </div>
+    </span>
+
+    <section id="services" class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+
+        <div class="text-center mb-5">
+            <h1 class="text-4xl mb-5 font-bold tracking-tight text-gray-900 sm:text-6xl">Servicos
+            </h1>
+            <div class="flex">
+                <div class="text-left">
+                    <p>
+                        Para a execução dos serviços de interpretação, serão designados intérpretes afiliados à Sign
+                        wave
+                        solutions
+                        que possuam qualificação acadêmica, bem como habilidades para fornecer o serviço solicitado.
+                        Oferecemos
+                        serviços de tradução em ambos os sentidos da língua, tanto em contextos privados (solicitados
+                        pela
+                        pessoa
+                        surda para situações cotidianas) quanto em contextos institucionais (solicitados por
+                        organizações
+                        públicas
+                        ou privadas).
+                    </p>
+                    <br>
+                    <ul class="max-w-md space-y-1 list-disc list-inside ">
+                        <li>
+                            Educativo
+                            escolas, ensino superior ...
+                        </li>
+                        <li>
+                            Eventos
+                            seminários, congressos, encontros ...
+                        </li>
+                    </ul>
+                </div>
+                <video class="w-56" autoplay="" loop="" muted="">
+                    <source src="/static/servicos.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+        <a href="/order"
+            class="text-white bg-indigo-600 hover:bg-indigo-500 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-indigo-600 dark:hover:bg-indigo-700 focus:outline-none dark:focus:ring-indigo-800">Pedido
+            de orcamento</a>
+    </section>
+
+    <span class="relative flex justify-center">
+        <div
+            class="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-transparent bg-gradient-to-r from-transparent via-gray-500 to-transparent opacity-75">
+        </div>
+    </span>
+
+    <section id="contacts" class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+        <div class="text-center flex flex-col">
+            <h1 class="text-4xl mb-5 font-bold tracking-tight text-gray-900 sm:text-6xl">Contactos
+            </h1>
+            Onde Nos Encontrar
+            <br>
+            R. Sacadura Cabral 501-467, S. Cosme
+            <br>
+            Informações de Contacto: +351 910 999 999
+        </div>
+    </section>
+
+    <span class="relative flex justify-center">
+        <div
+            class="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-transparent bg-gradient-to-r from-transparent via-gray-500 to-transparent opacity-75">
+        </div>
+    </span>
+</main>
+
+{{end}}
