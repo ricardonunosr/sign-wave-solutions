@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 	"html/template"
 	"net/http"
@@ -16,8 +17,23 @@ import (
 
 var router *chi.Mux
 
+type Order struct {
+	Duration      string `json:"duration"`
+	About         string `json:"about"`
+	NameEntity    string `json:"name_entity"`
+	Email         string `json:"email"`
+	StreetAddress string `json:"street_address"`
+	PostalCode    string `json:"postal_code"`
+}
+
 func main() {
 	godotenv.Load(".env")
+
+	tmpl, err := template.ParseFiles("views/email.html")
+	if err != nil {
+		panic(err)
+	}
+
 	// Change to templates https://github.com/sgulics/go-chi-example/blob/master/cmd/server/main.go
 	router = chi.NewRouter()
 	router.Use(middleware.Logger)
@@ -25,9 +41,7 @@ func main() {
 	staticDir := http.Dir("static")
 	FileServer(router, "/static", staticDir)
 
-	// Define a route for the homepage
 	router.Get("/", func(w http.ResponseWriter, r *http.Request) {
-		// Load and parse the HTML template
 		tmpl, _ := template.ParseFiles("views/partials/base.html", "views/index.html")
 		err := tmpl.Execute(w, nil)
 		if err != nil {
@@ -43,24 +57,34 @@ func main() {
 		}
 	})
 
-	router.Get("/sidebar", func(w http.ResponseWriter, r *http.Request) {
-		tmpl, _ := template.ParseFiles("views/sidebar.html")
-		err := tmpl.Execute(w, nil)
+	router.Post("/order", func(w http.ResponseWriter, r *http.Request) {
+		err := r.ParseForm()
 		if err != nil {
+			http.Error(w, "Unable to parse form", http.StatusBadRequest)
 			return
 		}
-	})
 
-	router.Post("/order", func(w http.ResponseWriter, r *http.Request) {
+		new_order := Order{
+			Duration:      r.FormValue("duration"),
+			About:         r.FormValue("about"),
+			NameEntity:    r.FormValue("name-entity"),
+			Email:         r.FormValue("email"),
+			StreetAddress: r.FormValue("street-address"),
+			PostalCode:    r.FormValue("postal-code"),
+		}
+
+		var buf bytes.Buffer
+		err = tmpl.Execute(&buf, new_order)
+		if err != nil {
+			panic(err)
+		}
+		htmlContent := buf.String()
+
 		m := mail.NewMessage()
-
 		m.SetHeader("From", "noreply@sign_wave_solutions.pt")
-
-		m.SetHeader("To", "ricardonunosr@gmail.com", "noah.doe@example.com")
-
-		m.SetHeader("Subject", "Pedido de Orcamento")
-
-		m.SetBody("text/html", "Hello <b>Kate</b> and <i>Noah</i>!")
+		m.SetHeader("To", "ricardonunosr@gmail.com")
+		m.SetHeader("Subject", "Pedido de Orçamento")
+		m.SetBody("text/html", htmlContent)
 
 		d := mail.NewDialer("smtp.gmail.com", 587, "ricardonunosr@gmail.com", "bbtx fqlb hntz rxly")
 
@@ -68,9 +92,10 @@ func main() {
 			panic(err)
 		}
 
+		w.Write([]byte("<p>Succeso</p>"))
 	})
 
-	err := http.ListenAndServe(fmt.Sprintf(":%s", os.Getenv("PORT")), router)
+	err = http.ListenAndServe(fmt.Sprintf(":%s", os.Getenv("PORT")), router)
 	if err != nil {
 		return
 	}
