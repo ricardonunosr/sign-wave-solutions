@@ -38,6 +38,7 @@ func main() {
 	emails := os.Getenv("EMAIL_ADDRESSES")
 	emailList := parseEmailAddresses(emails)
 	log.Printf("EMAIL_ADDRESSES: %s", emails)
+	log.Printf("PORT: %s", os.Getenv("PORT"))
 
 	tmpl, err := template.ParseFiles("views/email.html")
 	if err != nil {
