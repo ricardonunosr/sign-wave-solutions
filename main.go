@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	"cmp"
 	"fmt"
 	"html/template"
 	"log"
@@ -38,6 +39,8 @@ func main() {
 	emails := os.Getenv("EMAIL_ADDRESSES")
 	emailList := parseEmailAddresses(emails)
 	log.Printf("EMAIL_ADDRESSES: %s", emails)
+
+	port := cmp.Or(os.Getenv("PORT"), "3000")
 	log.Printf("PORT: %s", os.Getenv("PORT"))
 
 	tmpl, err := template.ParseFiles("views/email.html")
@@ -111,10 +114,7 @@ func main() {
 		w.Write([]byte("<p>Succeso</p>"))
 	})
 
-	err = http.ListenAndServe(fmt.Sprintf(":%s", os.Getenv("PORT")), router)
-	if err != nil {
-		return
-	}
+	log.Fatal(http.ListenAndServe((":" + port), router))
 }
 
 // FileServer conveniently sets up a http.FileServer handler to serve static files.
