@@ -51,6 +51,10 @@ func main() {
 	staticDir := http.Dir("static")
 	FileServer(router, "/static", staticDir)
 
+	router.Get("/favicon.ico", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "static/favicon.ico")
+	})
+
 	router.Get("/", func(w http.ResponseWriter, r *http.Request) {
 		tmpl, _ := template.ParseFiles("views/partials/base.html", "views/index.html")
 		err := tmpl.Execute(w, nil)
