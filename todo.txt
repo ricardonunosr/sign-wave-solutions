@@ -1,11 +1,11 @@
 Must:
 - make mobile work properly
     - make nav work fine with tiny javascript
-- Extract buttons and forms css
-- make email html template
+- Extract buttons and forms css - done
+- make email html template - done
 - make environment variables
-    - emails
-    - port
+    - emails - done
+    - port - done
     - name
     - more?
 - compress static folder

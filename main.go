@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"fmt"
 	"html/template"
+	"log"
 	"net/http"
 	"os"
 	"strings"
@@ -19,6 +20,7 @@ var router *chi.Mux
 
 type Order struct {
 	Duration      string `json:"duration"`
+	Date          string `json:"date"`
 	About         string `json:"about"`
 	NameEntity    string `json:"name_entity"`
 	Email         string `json:"email"`
@@ -26,8 +28,16 @@ type Order struct {
 	PostalCode    string `json:"postal_code"`
 }
 
+func parseEmailAddresses(emails string) []string {
+	return strings.Split(emails, ",")
+}
+
 func main() {
 	godotenv.Load(".env")
+
+	emails := os.Getenv("EMAIL_ADDRESSES")
+	emailList := parseEmailAddresses(emails)
+	log.Printf("EMAIL_ADDRESSES: %s", emails)
 
 	tmpl, err := template.ParseFiles("views/email.html")
 	if err != nil {
@@ -66,6 +76,7 @@ func main() {
 
 		new_order := Order{
 			Duration:      r.FormValue("duration"),
+			Date:          r.FormValue("date"),
 			About:         r.FormValue("about"),
 			NameEntity:    r.FormValue("name-entity"),
 			Email:         r.FormValue("email"),
@@ -82,8 +93,8 @@ func main() {
 
 		m := mail.NewMessage()
 		m.SetHeader("From", "noreply@sign_wave_solutions.pt")
-		m.SetHeader("To", "ricardonunosr@gmail.com")
-		m.SetHeader("Subject", "Pedido de Orçamento")
+		m.SetHeader("To", emailList...)
+		m.SetHeader("Subject", fmt.Sprintf("[%s] Pedido de Orçamento", new_order.NameEntity))
 		m.SetBody("text/html", htmlContent)
 
 		d := mail.NewDialer("smtp.gmail.com", 587, "ricardonunosr@gmail.com", "bbtx fqlb hntz rxly")
