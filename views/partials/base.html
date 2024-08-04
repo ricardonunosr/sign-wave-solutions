@@ -3,17 +3,19 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ template "title" . }}</title>
   <!-- TailwindCSS-->
   <!-- Web Library -->
   <script src="static/htmx.min.js"></script>
+  <link href="/static/output.css" rel="stylesheet">
   {{ template "scripts" }}
 </head>
 
-<body>
+<body class="mx-4">
   {{ template "body" . }}
 
-  <footer class="flex flex-col items-center py-12 text-gray-500">
+  <footer class="flex flex-col items-center py-6 text-gray-500">
     <div class="flex">
       <a href="/"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
           <path
@@ -36,7 +38,8 @@
         </svg></a>
     </div>
     <p>
-      © Copyright Sign Wave Solutions 2024 Design by <a href="https://ricardonunosr.github.io/website/">R</a> with &#10084;
+      © Copyright Sign Wave Solutions 2024 Design by <a href="https://ricardonunosr.github.io/website/">R</a> with
+      &#10084;
     </p>
   </footer>
 </body>

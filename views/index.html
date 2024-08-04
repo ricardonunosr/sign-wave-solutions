@@ -1,6 +1,5 @@
 {{define "title"}}Sign Wave Solutions{{end}}
 {{define "scripts"}}
-<link href="/static/output.css" rel="stylesheet">
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const hamburgerButton = document.getElementById('hamburger-menu');
@@ -138,13 +137,13 @@
             </div>
         </div>
     </div>
-    <span class="relative flex justify-center">
+    <span class="divider-primary">
         <div
             class="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-transparent bg-gradient-to-r from-transparent via-gray-500 to-transparent opacity-75">
         </div>
     </span>
 
-    <section id="about" class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+    <section id="about" class="section-primary">
         <div class="text-center mb-5">
             <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Sobre Nós
             </h1>
@@ -158,14 +157,14 @@
             </p>
         </div>
         <div class="flex justify-between text-center">
-            <div class="">
-                <img src="./static/carolina.webp" class="rounded-xl" width="300" height="300" />
+            <div class="justify-center">
+                <img src="./static/carolina.webp" class="rounded-xl inline-block w-3/4" width="300" height="300" />
                 <p>Carolina Ferreira
                     <hr> Licenciatura Língua Gestual Portuguesa
                 </p>
             </div>
             <div>
-                <img src="./static/mafalda.webp" class="rounded-xl" width="300" height="300" />
+                <img src="./static/mafalda.webp" class="rounded-xl inline-block w-3/4" width="300" height="300" />
                 <p>Mafalda Sousa
                     <hr> Licenciatura Língua Gestual Portuguesa
                 </p>
@@ -173,18 +172,18 @@
         </div>
     </section>
 
-    <span class="relative flex justify-center">
+    <span class="divider-primary">
         <div
             class="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-transparent bg-gradient-to-r from-transparent via-gray-500 to-transparent opacity-75">
         </div>
     </span>
 
-    <section id="services" class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+    <section id="services" class="section-primary">
 
         <div class="text-center mb-5">
             <h1 class="text-4xl mb-5 font-bold tracking-tight text-gray-900 sm:text-6xl">Servicos
             </h1>
-            <div class="flex">
+            <div class="flex lg:flex-row flex-col">
                 <div class="text-left">
                     <p>
                         Para a execução dos serviços de interpretação, serão designados intérpretes afiliados à Sign
@@ -201,7 +200,7 @@
                         ou privadas).
                     </p>
                     <br>
-                    <ul class="max-w-md space-y-1 list-disc list-inside ">
+                    <ul class="max-w-md space-y-1 list-disc list-inside">
                         <li>
                             Educativo
                             escolas, ensino superior ...
@@ -212,23 +211,25 @@
                         </li>
                     </ul>
                 </div>
-                <video class="w-56" autoplay="" loop="" muted="">
-                    <source src="/static/servicos.webm" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+                <div>
+                    <video class="w-fit" autoplay="" loop="" muted="">
+                        <source src="/static/servicos.webm" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
             </div>
         </div>
         <a href="/order" class="btn-primary">Pedido
             de orcamento</a>
     </section>
 
-    <span class="relative flex justify-center">
+    <span class="divider-primary">
         <div
             class="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-transparent bg-gradient-to-r from-transparent via-gray-500 to-transparent opacity-75">
         </div>
     </span>
 
-    <section id="contacts" class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+    <section id="contacts" class="section-primary ">
         <div class="text-center flex flex-col">
             <h1 class="text-4xl mb-5 font-bold tracking-tight text-gray-900 sm:text-6xl">Contactos
             </h1>
@@ -240,7 +241,7 @@
         </div>
     </section>
 
-    <span class="relative flex justify-center">
+    <span class="divider-primary">
         <div
             class="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-transparent bg-gradient-to-r from-transparent via-gray-500 to-transparent opacity-75">
         </div>
