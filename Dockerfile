@@ -11,20 +11,16 @@ RUN curl -sLO https://github.com/tailwindlabs/tailwindcss/releases/download/v3.3
     && chmod +x tailwindcss-linux-x64 \
     && mv tailwindcss-linux-x64 /usr/local/bin/tailwindcss
 
-RUN apt-get update \
-    && apt-get install --no-install-recommends --no-install-suggests -y \
-    make
-
 COPY static/* ./static/
 COPY views/ ./views/
 COPY main.go ./
-COPY Makefile ./
+COPY build.sh ./
 COPY tailwind.config.js ./
 
 # Build
-RUN make build
+RUN ./build.sh build
 
-FROM alpine:latest AS build-release-stage
+FROM scratch AS build-release-stage
 
 WORKDIR /app/dist
 EXPOSE 80

@@ -14,17 +14,18 @@
 # You need air for local development:
 #      - go install github.com/cosmtrek/air@latest
 #      - install tailwindcss CLI
-make run
+./build.sh run
 ```
 
 # Dockerfile
 ```bash
 docker build . -t sign-wave
-docker run -p 80:80 --env-file .env --rm --name sign-wave-app sign-wave
+docker run -p 3005:3005 --env-file .env --rm --name sign-wave-app sign-wave
 ```
 
 # `.env` example
 
 ```.env
 PORT=80
+EMAIL_ADDRESSES=something@gmail.com
 ```
